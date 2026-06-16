@@ -1,0 +1,192 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Isolated" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Isolated_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>Microsoft.Office.Interop.Excel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>Microsoft.Office.Interop.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Isolated" sap:VirtualizedContainerService.HintSize="1250,1586" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="ExcelData" />
+      <Variable x:TypeArguments="x:String" Name="ExceptionMessage" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Usamos la codificación ISO-8859-1 que es nativa y compatible con los reportes ANSI de SAP&#xD;&#xA;Dim enc As System.Text.Encoding = System.Text.Encoding.GetEncoding(&quot;ISO-8859-1&quot;)&#xD;&#xA;&#xD;&#xA;' Leer todas las líneas usando la codificación correcta&#xD;&#xA;Dim lineas As String() = File.ReadAllLines(in_FilePath, enc)&#xD;&#xA;&#xD;&#xA;Dim dt As New System.Data.DataTable()&#xD;&#xA;Dim encabezadoDetectado As Boolean = False&#xD;&#xA;&#xD;&#xA;For Each linea As String In lineas&#xD;&#xA;    Dim lineaLimpia As String = linea.Trim()&#xD;&#xA;    &#xD;&#xA;    ' 1. Ignorar líneas vacías, divisorias (---) o metadatos de SAP&#xD;&#xA;    If String.IsNullOrEmpty(lineaLimpia) OrElse lineaLimpia.StartsWith(&quot;-&quot;) OrElse lineaLimpia.Contains(&quot;Salida&quot;) Then&#xD;&#xA;        Continue For&#xD;&#xA;    End If&#xD;&#xA;    &#xD;&#xA;    ' 2. Verificar que la línea realmente contenga el caracter pipe '|'&#xD;&#xA;    If Not lineaLimpia.Contains(&quot;|&quot;) Then&#xD;&#xA;        Continue For&#xD;&#xA;    End If&#xD;&#xA;&#xD;&#xA;    ' 3. Separar por pipe '|'&#xD;&#xA;    Dim partes As String() = lineaLimpia.Split(New Char() {&quot;|&quot;c})&#xD;&#xA;    &#xD;&#xA;    ' Extraer solo las celdas internas (omitiendo el primer y último elemento vacío por los pipes de los extremos)&#xD;&#xA;    Dim celdasReales As New List(Of String)()&#xD;&#xA;    For i As Integer = 1 To partes.Length - 2&#xD;&#xA;        celdasReales.Add(partes(i).Trim())&#xD;&#xA;    Next&#xD;&#xA;&#xD;&#xA;    ' 4. Procesar el Encabezado de la tabla&#xD;&#xA;    If Not encabezadoDetectado Then&#xD;&#xA;        ' Comprobamos si es la fila de títulos buscando la columna Ce.&#xD;&#xA;        If celdasReales.Count &gt; 0 AndAlso celdasReales(0).StartsWith(&quot;Ce.&quot;) Then&#xD;&#xA;            For Each columna As String In celdasReales&#xD;&#xA;                Dim nombreCol As String = columna&#xD;&#xA;                Dim contador As Integer = 1&#xD;&#xA;                While dt.Columns.Contains(nombreCol)&#xD;&#xA;                    nombreCol = columna &amp; &quot;_&quot; &amp; contador&#xD;&#xA;                    contador += 1&#xD;&#xA;                End While&#xD;&#xA;                dt.Columns.Add(nombreCol)&#xD;&#xA;            Next&#xD;&#xA;            encabezadoDetectado = True&#xD;&#xA;        End If&#xD;&#xA;    Else&#xD;&#xA;        ' 5. Procesar las Filas de datos&#xD;&#xA;        If celdasReales.Count = dt.Columns.Count Then&#xD;&#xA;            dt.Rows.Add(celdasReales.ToArray())&#xD;&#xA;        End If&#xD;&#xA;    End If&#xD;&#xA;Next&#xD;&#xA;&#xD;&#xA;out_Dt = dt" DisplayName="Execute VB.Net code to read file and populate data table" sap:VirtualizedContainerService.HintSize="450,197" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">
+          <Literal x:TypeArguments="x:String">C:\Users\aci-cns\Documents\UiPath\AMP06_00_InformeSeguimientoRepuestos\Data\Input\Test.csv</Literal>
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_Dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="ExcelData" />
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:WriteRange WorkbookPathResource="{x:Null}" DataTable="[ExcelData]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="450,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="C:\Users\aci-cns\Documents\UiPath\AMP06_00_InformeSeguimientoRepuestos\Data\Input\TestCsv.xlsx" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,123" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Start macro" />
+    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" AppliesTo="OnlyCurrentUser" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="EXCEL.exe" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim excelApp As Microsoft.Office.Interop.Excel.Application = Nothing&#xD;&#xA;Dim excelWorkbook As Microsoft.Office.Interop.Excel.Workbook = Nothing&#xD;&#xA;&#xD;&#xA;Try&#xD;&#xA;    ' Inicializar la aplicación de Excel de fondo&#xD;&#xA;    excelApp = New Microsoft.Office.Interop.Excel.Application()&#xD;&#xA;    excelApp.Visible = False ' Cambiar a True si deseas ver el proceso&#xD;&#xA;    excelApp.DisplayAlerts = False ' Evita ventanas emergentes que detengan el script&#xD;&#xA;&#xD;&#xA;    ' Abrir el libro de Excel&#xD;&#xA;    excelWorkbook = excelApp.Workbooks.Open(in_WorkbookPath)&#xD;&#xA;&#xD;&#xA;    ' Ejecutar la macro&#xD;&#xA;    excelApp.Run(in_MacroName)&#xD;&#xA;&#xD;&#xA;    ' Guardar y cerrar el libro&#xD;&#xA;    excelWorkbook.Save()&#xD;&#xA;    excelWorkbook.Close(True)&#xD;&#xA;&#xD;&#xA;Catch ex As Exception&#xD;&#xA;    ' Capturar y relanzar cualquier error para que UiPath lo detecte&#xD;&#xA;    Throw New Exception(&quot;Error al ejecutar la macro de Excel: &quot; &amp; ex.Message)&#xD;&#xA;&#x9;outException = ex.Message&#xD;&#xA;&#xD;&#xA;Finally&#xD;&#xA;    ' Limpieza absoluta de los objetos COM para evitar que Excel se quede colgado en administrador de tareas&#xD;&#xA;    If excelWorkbook IsNot Nothing Then&#xD;&#xA;        System.Runtime.InteropServices.Marshal.ReleaseComObject(excelWorkbook)&#xD;&#xA;    End If&#xD;&#xA;    &#xD;&#xA;    If excelApp IsNot Nothing Then&#xD;&#xA;        excelApp.Quit()&#xD;&#xA;        System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp)&#xD;&#xA;    End If&#xD;&#xA;    &#xD;&#xA;    ' Forzar la recolección de basura por seguridad&#xD;&#xA;    GC.Collect()&#xD;&#xA;    GC.WaitForPendingFinalizers()&#xD;&#xA;End Try" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="450,197" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_WorkbookPath">
+          <Literal x:TypeArguments="x:String">C:\Users\aci-cns\Documents\Test UiPath\Informe seguimiento Repuestos\Reportes\SEGUIMIENTO REPUESTOS 03-jun.-2026 13-19-11.xlsm</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MacroName">
+          <Literal x:TypeArguments="x:String">ActualizarInforme</Literal>
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outException">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="ExceptionMessage" />
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,248" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim excelApp As Microsoft.Office.Interop.Excel.Application = Nothing&#xA;Dim excelWorkbook As Microsoft.Office.Interop.Excel.Workbook = Nothing&#xA;&#xA;Try&#xA;    excelApp = New Microsoft.Office.Interop.Excel.Application()&#xA;    &#xA;    ' CAMBIO CRUCIAL: Debe ser True para que los .Select de tu macro no fallen&#xA;    excelApp.Visible = True &#xA;    excelApp.DisplayAlerts = False &#xA;&#xA;    excelWorkbook = excelApp.Workbooks.Open(in_WorkbookPath)&#xA;&#xA;    ' Ejecutar la macro pasándole el nombre exacto&#xA;    excelApp.Run(&quot;ActualizarInforme&quot;)&#xA;&#xA;    excelWorkbook.Save()&#xA;    excelWorkbook.Close(True)&#xA;&#xA;Catch ex As Exception&#xA;    If ex.InnerException IsNot Nothing Then&#xA;        Throw New Exception(&quot;Error dentro de la Macro: &quot; &amp; ex.InnerException.Message)&#xA;&#x9;&#x9;outException = ex.Message&#xA;    Else&#xA;        Throw New Exception(&quot;Error de Invoke Code: &quot; &amp; ex.Message)&#xA;    End If&#xA;Finally&#xA;    ' ... (El resto del bloque Finally de limpieza queda exactamente igual)&#xA;End Try" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="416,188" sap2010:WorkflowViewState.IdRef="InvokeCode_4">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_WorkbookPath">C:\Users\aci-cns\Documents\Test UiPath\Informe seguimiento Repuestos\Reportes\SEGUIMIENTO REPUESTOS 03-jun.-2026 13-19-11.xlsm</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_MacroName">ActualizarInforme</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="outException">[ExceptionMessage]</OutArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" AppliesTo="OnlyCurrentUser" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="EXCEL.exe" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,123" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;End macro: &quot;+ExceptionMessage]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,248" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;    ' 1. Configurar la cadena de conexión para Excel (.xlsx)&#xA;    ' IMEX=1 le dice al motor que lea datos mixtos (números y texto) como texto para evitar valores nulos.&#xA;    ' HDR=No indica que no use la primera fila como encabezado.&#xA;    Dim strConex As String = &quot;Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&quot; &amp; in_RutaExcel &amp; &quot;;Extended Properties='Excel 12.0 Xml;HDR=No;IMEX=1';&quot;&#xA;    &#xA;    Dim dtTemporal As New System.Data.DataTable()&#xA;&#xA;    ' 2. Conectar al archivo y extraer los datos de la primera hoja&#xA;    Using conexion As New System.Data.OleDb.OleDbConnection(strConex)&#xA;        conexion.Open()&#xA;        &#xA;        ' Obtenemos el nombre de la primera hoja dinámicamente&#xA;        Dim dtEsquema As System.Data.DataTable = conexion.GetOleDbSchemaTable(System.Data.OleDb.OleDbSchemaGuid.Tables, Nothing)&#xA;        Dim nombreHoja As String = dtEsquema.Rows(0)(&quot;TABLE_NAME&quot;).ToString()&#xA;        &#xA;        ' Traemos toda la información de esa hoja&#xA;        Dim query As String = &quot;SELECT * FROM [&quot; &amp; nombreHoja &amp; &quot;]&quot;&#xA;        &#xA;        Using comando As New System.Data.OleDb.OleDbCommand(query, conexion)&#xA;            Using adaptador As New System.Data.OleDb.OleDbDataAdapter(comando)&#xA;                adaptador.Fill(dtTemporal)&#xA;            End Using&#xA;        End Using&#xA;    End Using&#xA;&#xA;    ' 3. Lógica para simular el rango A2 (Omitir la primera fila del archivo)&#xA;    If dtTemporal.Rows.Count &gt; 0 Then&#xA;        ' Clonamos la estructura de la tabla (columnas)&#xA;        out_dtDatos = dtTemporal.Clone()&#xA;        &#xA;        ' Importamos todas las filas a partir del índice 1 (que es la segunda fila del Excel)&#xA;        For i As Integer = 1 To dtTemporal.Rows.Count - 1&#xA;            out_dtDatos.ImportRow(dtTemporal.Rows(i))&#xA;        Next&#xA;    Else&#xA;        ' Si el archivo estaba completamente vacío&#xA;        out_dtDatos = dtTemporal&#xA;    End If&#xA;&#xA;Catch ex As Exception&#xA;    ' Captura cualquier error estructural y lo eleva a UiPath&#xA;    Throw New Exception(&quot;Error al leer el Excel mediante Invoke Code: &quot; &amp; ex.Message)&#xA;End Try" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="416,188" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_RutaExcel">C:\Users\aci-cns\Documents\UiPath\AMP06_00_InformeSeguimientoRepuestos\Data\Temp\ReportDownloaded.xlsx</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtDatos">[ExcelData]</OutArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;    ' 1. Configurar la cadena de conexión&#xA;    ' Al cambiar HDR=Yes, forzamos a que la fila 1 (A1) se convierta en el nombre de las columnas,&#xA;    ' logrando que el contenido de la DataTable empiece estrictamente desde la fila 2 (A2).&#xA;    Dim strConex As String = &quot;Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&quot; &amp; in_RutaExcel &amp; &quot;;Extended Properties='Excel 12.0 Xml;HDR=Yes;IMEX=1';&quot;&#xA;    &#xA;    Dim dtTemporal As New System.Data.DataTable()&#xA;&#xA;    ' 2. Conectar al archivo y extraer los datos de la primera hoja&#xA;    Using conexion As New System.Data.OleDb.OleDbConnection(strConex)&#xA;        conexion.Open()&#xA;        &#xA;        ' Obtener el nombre de la primera hoja dinámicamente&#xA;        Dim dtEsquema As System.Data.DataTable = conexion.GetOleDbSchemaTable(System.Data.OleDb.OleDbSchemaGuid.Tables, Nothing)&#xA;        Dim nombreHoja As String = dtEsquema.Rows(0)(&quot;TABLE_NAME&quot;).ToString()&#xA;        &#xA;        ' Seleccionar todos los registros (que ahora iniciarán en la fila 2)&#xA;        Dim query As String = &quot;SELECT * FROM [&quot; &amp; nombreHoja &amp; &quot;]&quot;&#xA;        &#xA;        Using comando As New System.Data.OleDb.OleDbCommand(query, conexion)&#xA;            Using adaptador As New System.Data.OleDb.OleDbDataAdapter(comando)&#xA;                adaptador.Fill(dtTemporal)&#xA;            End Using&#xA;        End Using&#xA;    End Using&#xA;&#xA;    ' 3. Asignar el resultado al argumento de salida de UiPath&#xA;    out_dtDatos = dtTemporal&#xA;&#xA;Catch ex As Exception&#xA;    ' Captura cualquier error y lo envía a la consola de UiPath&#xA;    Throw New Exception(&quot;Error al leer el Excel desde A2 en Invoke Code: &quot; &amp; ex.Message)&#xA;End Try" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="450,197" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_RutaExcel">C:\Users\aci-cns\Documents\UiPath\AMP06_00_InformeSeguimientoRepuestos\Data\Temp\ReportDownloaded.xlsx</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtDatos">[ExcelData]</OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
+  </Sequence>
+</Activity>
