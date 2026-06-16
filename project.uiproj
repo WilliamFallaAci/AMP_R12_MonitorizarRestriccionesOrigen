@@ -1,0 +1,6 @@
+{
+  "Name": "AMP_R12_MonitorizarRestriccionesOrigen",
+  "ProjectType": "Tests",
+  "Description": "Monitorizar restricciones de origen en SAP",
+  "MainFile": "Main.xaml"
+}
