@@ -109,7 +109,7 @@
       <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="AMP06_00_InformeSeguimientoRepuestos&#xA;Generar el informe de seguimiento a repuestos de las diferentes transacciones en SAP&#xA;SAP Logon, ODM portal web" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1196,850" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="AMP_R12_MonitorizarRestriccionesOrigen&#xA;Monitorizar restricciones de origen en SAP&#xA;SAP Logon" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1196,850" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
