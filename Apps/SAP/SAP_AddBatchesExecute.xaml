@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Iterate_Steps_SAP" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Iterate_Steps_SAP" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_NextBatch" Type="OutArgument(x:Boolean)" />
     <x:Property Name="in_BatchIntervals" Type="InArgument(x:String)" />
@@ -120,13 +120,14 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add_Batches_Execute" sap:VirtualizedContainerService.HintSize="1190,1483" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SAP_AddBatchesExecute" sap:VirtualizedContainerService.HintSize="1190,1833" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="SAP add batches and ejecutar" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="452,1460" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V2">
+    <ui:LogMessage DisplayName="Log Message - start" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Inicia add batches and ejecutar en SAP Logon&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="SAP add batches and ejecutar" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="452,1469" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -268,5 +269,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
+    <ui:LogMessage DisplayName="Log Message - end" sap:VirtualizedContainerService.HintSize="452,166" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Finalizaadd batches and ejecutar en SAP Logon&quot;]" />
   </Sequence>
 </Activity>
