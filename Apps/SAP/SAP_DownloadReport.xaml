@@ -124,7 +124,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SAP_DownloadReport" sap:VirtualizedContainerService.HintSize="1190,3553" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SAP_DownloadReport" sap:VirtualizedContainerService.HintSize="1190,3781" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -382,6 +382,16 @@
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
     <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="False" DataTable="[out_TableReport]" DisplayName="Read Excel sheet data into a DataTable" sap:VirtualizedContainerService.HintSize="569,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="M1" SheetName="[in_SheetName]" WorkbookPath="[in_FilePath]" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove columns range from C to L" Code="' Borramos de la columna L (índice 11) hasta la C (índice 2) en reversa&#xA;' para evitar que los índices de las columnas se muevan durante el borrado.&#xA;For i As Integer = 11 To 2 Step -1&#xA;    If io_TableReport.Columns.Count &gt; i Then&#xA;        io_TableReport.Columns.RemoveAt(i)&#xA;    End If&#xA;Next" DisplayName="Invoke VB.NET code to process data table" sap:VirtualizedContainerService.HintSize="569,228" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TableReport">[out_TableReport]</InOutArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
     <ui:MultipleAssign DisplayName="Filter and clean a DataTable for reporting" sap:VirtualizedContainerService.HintSize="569,149" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
