@@ -1,9 +1,8 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="SAP_DownloadReport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Transaction" Type="InArgument(x:String)" />
     <x:Property Name="in_SheetName" Type="InArgument(x:String)" />
     <x:Property Name="in_FilePath" Type="InArgument(x:String)" />
-    <x:Property Name="out_DataTableRecords" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_TableReport" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
@@ -125,7 +124,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SAP_DownloadReport" sap:VirtualizedContainerService.HintSize="1190,3737" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SAP_DownloadReport" sap:VirtualizedContainerService.HintSize="1190,3553" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -134,19 +133,19 @@
     <ui:LogMessage DisplayName="Log Message - start" sap:VirtualizedContainerService.HintSize="569,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Inicia seleccionar disposición en SAP Logon&quot;]" />
     <Assign DisplayName="Initialize a DataTable variable" sap:VirtualizedContainerService.HintSize="569,175" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
-        <OutArgument x:TypeArguments="sd:DataTable">[out_DataTableRecords]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable">[out_TableReport]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="sd:DataTable">[New DataTable]</InArgument>
       </Assign.Value>
     </Assign>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Export SAP spare parts tracking report to Exc" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="569,2785" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Export SAP spare parts tracking report to Exc" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="569,2745" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do - Easy Access" sap:VirtualizedContainerService.HintSize="567,2634" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do - Easy Access" sap:VirtualizedContainerService.HintSize="567,2594" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -236,7 +235,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NTypeInto>
-            <ui:GetLastDownloadedFile File="{x:Null}" FileResource="{x:Null}" IgnoreFiles="{x:Null}" Timeout="{x:Null}" DisplayName="Automates downloading, saving, and processing spare parts report in Excel." DownloadFolder="[Path.GetDirectoryName(in_FilePath)]" sap:VirtualizedContainerService.HintSize="533,1242" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_2">
+            <ui:GetLastDownloadedFile File="{x:Null}" FileResource="{x:Null}" IgnoreFiles="{x:Null}" Timeout="{x:Null}" DisplayName="Automates downloading, saving, and processing spare parts report in Excel." DownloadFolder="[Path.GetDirectoryName(in_FilePath)]" sap:VirtualizedContainerService.HintSize="533,1202" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_2">
               <ui:GetLastDownloadedFile.Body>
                 <ActivityAction>
                   <Sequence DisplayName="Clicks 'Crear' in SAP, then interacts with Excel" sap:VirtualizedContainerService.HintSize="499,919" sap2010:WorkflowViewState.IdRef="Sequence_20">
@@ -382,32 +381,23 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
-    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="False" DataTable="[out_DataTableRecords]" DisplayName="Read Excel sheet data into a DataTable" sap:VirtualizedContainerService.HintSize="569,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_SheetName]" WorkbookPath="[in_FilePath]" />
-    <ui:MultipleAssign DisplayName="Filter and clean a DataTable for reporting" sap:VirtualizedContainerService.HintSize="569,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="False" DataTable="[out_TableReport]" DisplayName="Read Excel sheet data into a DataTable" sap:VirtualizedContainerService.HintSize="569,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="M1" SheetName="[in_SheetName]" WorkbookPath="[in_FilePath]" />
+    <ui:MultipleAssign DisplayName="Filter and clean a DataTable for reporting" sap:VirtualizedContainerService.HintSize="569,149" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
             <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="sd:DataTable">[out_DataTableRecords]</OutArgument>
+              <OutArgument x:TypeArguments="sd:DataTable">[out_TableReport]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From row In out_DataTableRecords.AsEnumerable()
+              <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From row In out_TableReport.AsEnumerable()
 Where Not (String.IsNullOrWhiteSpace(row(2).ToString) AndAlso String.IsNullOrWhiteSpace(row(3).ToString) AndAlso String.IsNullOrWhiteSpace(row(4).ToString))
 Select row).CopyToDataTable()]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="sd:DataTable">[out_DataTableRecords]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="sd:DataTable">[out_DataTableRecords.AsEnumerable.Skip(1).CopyToDataTable]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:DeleteFileX DisplayName="Delete a file using the provided path" sap:VirtualizedContainerService.HintSize="569,113" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_FilePath]" />
     <ui:LogMessage DisplayName="Log Message - end" sap:VirtualizedContainerService.HintSize="569,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Finaliza seleccionar disposición en SAP Logon&quot;]" />
   </Sequence>
 </Activity>
