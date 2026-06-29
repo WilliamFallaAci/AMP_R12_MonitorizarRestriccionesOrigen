@@ -1,5 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="SAP_DownloadReport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_MainReport" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_SheetName" Type="InArgument(x:String)" />
     <x:Property Name="in_FilePath" Type="InArgument(x:String)" />
     <x:Property Name="out_TableReport" Type="OutArgument(sd:DataTable)" />
@@ -124,7 +125,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SAP_DownloadReport" sap:VirtualizedContainerService.HintSize="1190,3781" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SAP_DownloadReport" sap:VirtualizedContainerService.HintSize="1190,4884" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -139,57 +140,93 @@
         <InArgument x:TypeArguments="sd:DataTable">[New DataTable]</InArgument>
       </Assign.Value>
     </Assign>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Export SAP spare parts tracking report to Exc" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="569,2745" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Export SAP spare parts tracking report to Exc" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="569,3374" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do - Easy Access" sap:VirtualizedContainerService.HintSize="567,2594" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do - Easy Access" sap:VirtualizedContainerService.HintSize="567,3223" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Export SAP spare parts tracking report to spreadsheet." sap:VirtualizedContainerService.HintSize="533,840" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="15" RetryInterval="00:00:30">
+            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Export SAP spare parts tracking report to spreadsheet." sap:VirtualizedContainerService.HintSize="533,1469" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="15" RetryInterval="00:00:30">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,633" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="486,1262" sap2010:WorkflowViewState.IdRef="Sequence_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Hoja de cálculo' button in SAP" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable DesignTimeRectangle="352, 162, 33, 20" ElementVisibilityArgument="Interactive" Guid="630df30f-e85e-4033-819a-7df969dc6bc6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAYAAAADU1RxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHiSURBVEhLxZY7S8NQGIbzQ1xdXMXVxcUfYSfj5Q84KOIioohXEBULLXVRpLYICgpeFq+bg6JSqBLFVsU2aVqv7XnlOzQ1l9OmQa0fPEsOJ8+TBJJIHR3dkOX/gdwDff2QosvDYO/XwIdSU8hJblnugqTdLqJlKAypbbwstI5C9ldhH/cgdymCRKG9WFloHbn93+UzIY4wz9T6Occc4fP5LDhO7IX8ozjCEJspRdjmpyHs81YcYR4jotxY7oi+7Rn2fvUdobrcCZrmnlaOaHiEtuYZljsEuXlEWglZIpBeslKMGN5pFIbwCPueKmD6DshdNsK4cjMUIQr50whDaqZ3o84R4iVCvwtCUwJ4SYSsEc83QWtEKug9IhV0Rb2ZxcPVNJoa6pG9mwfTN0FuHvEUDwgj7FR8HAKpPSBZDCDeEn4wLQJy84hkzG95Y9pPQGNE2AOqiXhNLCCjzJUCCKRCKGgRkJtH3F/OV/x2GBGiABq3CBKaAwimrqKgRkBuHqGczfADzs1FXMYtgqVXwDJbYNkDsOwRmL4Lpka5k9w8In46gXw67NhMmN+KlbDvqwZykptHnB+PIJdcwlvSX1PISW4eEZjrwdnhIC5OhmoKOcnd3t4NSZY7Hb9dtaMTk6Nj+ALnRhzWafjNUgAAAABJRU5ErkJggg==" InformativeScreenshot="2ecfa86565c3d64d4685eb77805f3232.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Campos Z Posiciones' /&gt;" SearchSteps="Image" TargetType="ImageBased" Version="V6" WaitForReadyArgument="Complete">
-                          <uix:TargetAnchorable.PointOffset>
-                            <uix:PointOffset X="12" Y="5" />
-                          </uix:TargetAnchorable.PointOffset>
-                          <uix:TargetAnchorable.RegionOffset>
-                            <uix:RegionOffset Height="0" Width="0" X="0" Y="0" />
-                          </uix:TargetAnchorable.RegionOffset>
-                        </uix:TargetAnchorable>
-                      </uix:NClick.Target>
+                    <If Condition="[in_MainReport]" DisplayName="If main report" sap:VirtualizedContainerService.HintSize="452,1017" sap2010:WorkflowViewState.IdRef="If_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </uix:NClick>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Clicks the 'Hoja de cálculo' button in SAP" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable CVScreenId="6622b343-db9d-461a-94c4-fd3c1c3cb672" CvTextArea="26, 7, 85, 15" CvTextArgument="Hoja de calculo" CvType="Text" DesignTimeRectangle="3, 3, 216, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='Contexto' role='popup menu' /&gt;&lt;ctrl name='Hoja de cálculo' role='menu item' text='Hoja de cálculo' /&gt;" Guid="08546b66-9efa-4144-835a-d5dbb1c014cb" InformativeScreenshot="aa6b381ca541d601c99a71552712cd03.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32768' idx='*' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Complete" />
-                      </uix:NClick.Target>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </uix:NClick>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click SAP 'Exportar a...' button" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_13" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
+                      <If.Then>
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,439" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Hoja de cálculo' button in SAP" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable DesignTimeRectangle="352, 162, 33, 20" ElementVisibilityArgument="Interactive" Guid="630df30f-e85e-4033-819a-7df969dc6bc6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAYAAAADU1RxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHiSURBVEhLxZY7S8NQGIbzQ1xdXMXVxcUfYSfj5Q84KOIioohXEBULLXVRpLYICgpeFq+bg6JSqBLFVsU2aVqv7XnlOzQ1l9OmQa0fPEsOJ8+TBJJIHR3dkOX/gdwDff2QosvDYO/XwIdSU8hJblnugqTdLqJlKAypbbwstI5C9ldhH/cgdymCRKG9WFloHbn93+UzIY4wz9T6Occc4fP5LDhO7IX8ozjCEJspRdjmpyHs81YcYR4jotxY7oi+7Rn2fvUdobrcCZrmnlaOaHiEtuYZljsEuXlEWglZIpBeslKMGN5pFIbwCPueKmD6DshdNsK4cjMUIQr50whDaqZ3o84R4iVCvwtCUwJ4SYSsEc83QWtEKug9IhV0Rb2ZxcPVNJoa6pG9mwfTN0FuHvEUDwgj7FR8HAKpPSBZDCDeEn4wLQJy84hkzG95Y9pPQGNE2AOqiXhNLCCjzJUCCKRCKGgRkJtH3F/OV/x2GBGiABq3CBKaAwimrqKgRkBuHqGczfADzs1FXMYtgqVXwDJbYNkDsOwRmL4Lpka5k9w8In46gXw67NhMmN+KlbDvqwZykptHnB+PIJdcwlvSX1PISW4eEZjrwdnhIC5OhmoKOcnd3t4NSZY7Hb9dtaMTk6Nj+ALnRhzWafjNUgAAAABJRU5ErkJggg==" InformativeScreenshot="2ecfa86565c3d64d4685eb77805f3232.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Campos Z Posiciones' /&gt;" SearchSteps="Image" TargetType="ImageBased" Version="V6" WaitForReadyArgument="Complete">
+                                <uix:TargetAnchorable.PointOffset>
+                                  <uix:PointOffset X="12" Y="5" />
+                                </uix:TargetAnchorable.PointOffset>
+                                <uix:TargetAnchorable.RegionOffset>
+                                  <uix:RegionOffset Height="0" Width="0" X="0" Y="0" />
+                                </uix:TargetAnchorable.RegionOffset>
+                              </uix:TargetAnchorable>
+                            </uix:NClick.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NClick>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Clicks the 'Hoja de cálculo' button in SAP" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable CVScreenId="6622b343-db9d-461a-94c4-fd3c1c3cb672" CvTextArea="26, 7, 85, 15" CvTextArgument="Hoja de calculo" CvType="Text" DesignTimeRectangle="3, 3, 216, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='Contexto' role='popup menu' /&gt;&lt;ctrl name='Hoja de cálculo' role='menu item' text='Hoja de cálculo' /&gt;" Guid="08546b66-9efa-4144-835a-d5dbb1c014cb" InformativeScreenshot="aa6b381ca541d601c99a71552712cd03.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32768' idx='*' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Complete" />
+                            </uix:NClick.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NClick>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,439" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Previsualización…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutLong&quot;))]" Version="V5">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable DesignTimeRectangle="230, 123, 20, 20" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;sap id='tbar[*]/btn[*]' tooltip='Previsualización*' type='GuiButton' /&gt;" Guid="cb9db292-76fa-4f9a-a75d-d0b12d08ec87" InformativeScreenshot="b56142a8f678af36162a097f9d1914c5.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Modificaciones en Pedido*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Complete" />
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Previsualización…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutLong&quot;))]" Version="V5">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable DesignTimeRectangle="230, 123, 20, 20" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;sap id='tbar[*]/btn[*]' tooltip='Hoja de cálculo...*' type='GuiButton' /&gt;" Guid="57c0262a-6c39-4661-a440-dd8b0cfba134" InformativeScreenshot="694d10635becbc94776cffb89690c513.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Modificaciones en Pedido*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Complete" />
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click SAP 'Exportar a...' button" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,185" sap2010:WorkflowViewState.IdRef="NClick_13" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable DesignTimeRectangle="410, 157, 102, 20" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;sap id='tbar[0]/btn[20]' text='Exportar a...' tooltip='Exportar datos*' type='GuiButton' /&gt;" Guid="dbaeae49-492d-4b3c-ae73-6ebca191cd7c" InformativeScreenshot="bc68fa9a81a93ff53dd9dc52775909c0.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Exportar como' idx='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Complete" />
                       </uix:NClick.Target>
@@ -381,33 +418,61 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
-    <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="False" DataTable="[out_TableReport]" DisplayName="Read Excel sheet data into a DataTable" sap:VirtualizedContainerService.HintSize="569,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="M1" SheetName="[in_SheetName]" WorkbookPath="[in_FilePath]" />
-    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove columns range from C to L" Code="' Borramos de la columna L (índice 11) hasta la C (índice 2) en reversa&#xA;' para evitar que los índices de las columnas se muevan durante el borrado.&#xA;For i As Integer = 11 To 2 Step -1&#xA;    If io_TableReport.Columns.Count &gt; i Then&#xA;        io_TableReport.Columns.RemoveAt(i)&#xA;    End If&#xA;Next" DisplayName="Invoke VB.NET code to process data table" sap:VirtualizedContainerService.HintSize="569,228" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
-      <ui:InvokeCode.Arguments>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TableReport">[out_TableReport]</InOutArgument>
-      </ui:InvokeCode.Arguments>
+    <If Condition="[in_MainReport]" DisplayName="If main report" sap:VirtualizedContainerService.HintSize="569,971" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeCode>
-    <ui:MultipleAssign DisplayName="Filter and clean a DataTable for reporting" sap:VirtualizedContainerService.HintSize="569,149" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
-      <ui:MultipleAssign.AssignOperations>
-        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="sd:DataTable">[out_TableReport]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From row In out_TableReport.AsEnumerable()
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,548" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="False" DataTable="[out_TableReport]" DisplayName="Read Excel sheet data into a DataTable" sap:VirtualizedContainerService.HintSize="478,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="M1" SheetName="[in_SheetName]" WorkbookPath="[in_FilePath]" />
+          <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove columns range from C to L" Code="' Borramos de la columna L (índice 11) hasta la C (índice 2) en reversa&#xA;' para evitar que los índices de las columnas se muevan durante el borrado.&#xA;For i As Integer = 11 To 2 Step -1&#xA;    If io_TableReport.Columns.Count &gt; i Then&#xA;        io_TableReport.Columns.RemoveAt(i)&#xA;    End If&#xA;Next" DisplayName="Invoke VB.NET code to process data table" sap:VirtualizedContainerService.HintSize="478,228" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+            <ui:InvokeCode.Arguments>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TableReport">[out_TableReport]</InOutArgument>
+            </ui:InvokeCode.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeCode>
+          <ui:MultipleAssign DisplayName="Filter and clean a DataTable for reporting" sap:VirtualizedContainerService.HintSize="478,140" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sd:DataTable">[out_TableReport]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From row In out_TableReport.AsEnumerable()
 Where Not (String.IsNullOrWhiteSpace(row(2).ToString) AndAlso String.IsNullOrWhiteSpace(row(3).ToString) AndAlso String.IsNullOrWhiteSpace(row(4).ToString))
 Select row).CopyToDataTable()]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-        </scg:List>
-      </ui:MultipleAssign.AssignOperations>
-    </ui:MultipleAssign>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+          </ui:MultipleAssign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,284" sap2010:WorkflowViewState.IdRef="Sequence_24">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[out_TableReport]" DisplayName="Read Excel sheet data into a DataTable" sap:VirtualizedContainerService.HintSize="478,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[in_SheetName]" WorkbookPath="[in_FilePath]" />
+          <ui:DeleteFileX DisplayName="Delete a file from a given path" sap:VirtualizedContainerService.HintSize="478,104" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_FilePath]" />
+        </Sequence>
+      </If.Else>
+    </If>
     <ui:LogMessage DisplayName="Log Message - end" sap:VirtualizedContainerService.HintSize="569,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Finaliza seleccionar disposición en SAP Logon&quot;]" />
   </Sequence>
 </Activity>

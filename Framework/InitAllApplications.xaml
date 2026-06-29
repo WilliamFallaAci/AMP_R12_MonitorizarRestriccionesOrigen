@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_TransactionData" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_ReportPath" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -126,16 +127,12 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1190,1285" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1190,1911" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="TableReport">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="New DataTable" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="ReportPath" />
+      <Variable x:TypeArguments="sd:DataTable" Default="[New DataTable]" Name="TableReport" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -144,6 +141,29 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening applications...&quot;]" />
+    <If Condition="[Directory.Exists(Path.Combine(System.Environment.CurrentDirectory,&quot;Data\Temp&quot;))]" DisplayName="Delete 'Data\Temp' folder if it exists" sap:VirtualizedContainerService.HintSize="478,328" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:DeleteFolderX DisplayName="Delete temporary folder and its contents" sap:VirtualizedContainerService.HintSize="416,104" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[Path.Combine(System.Environment.CurrentDirectory,&quot;Data\Temp&quot;)]" Recursive="True" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create a temporary folder for data" sap:VirtualizedContainerService.HintSize="478,123" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Path.Combine(System.Environment.CurrentDirectory,&quot;Data\Temp&quot;)]" />
     <ui:MultipleAssign DisplayName="Initialize data table and report path" sap:VirtualizedContainerService.HintSize="478,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
@@ -157,7 +177,7 @@
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
             <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[ReportPath]</OutArgument>
+              <OutArgument x:TypeArguments="x:String">[out_ReportPath]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
               <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("ReportPath").ToString.Trim,String.Format(in_Config("ReportName").ToString.Trim,Now.ToString("yyyyMMdd")))]</InArgument>
@@ -196,8 +216,9 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="SAP_DownloadReport - Invoke Workflow File (Apps\SAP\SAP_DownloadReport.xaml)" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Apps\SAP\SAP_DownloadReport.xaml">
       <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_MainReport">True</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_Config("ReportSheetName").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[ReportPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[out_ReportPath]</InArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TableReport">[TableReport]</OutArgument>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
@@ -208,11 +229,11 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Compare Reports - Invoke Workflow File (Utils\Compare Reports.xaml)" sap:VirtualizedContainerService.HintSize="478,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Utils\Compare Reports.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Compare Reports - Invoke Workflow File (Utils\Compare Reports.xaml)" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Utils\Compare Reports.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DuplicateResults">[out_TransactionData]</OutArgument>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[ReportPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[out_ReportPath]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_Config("ReportSheetName").ToString.Trim]</InArgument>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TableReport">[TableReport]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
@@ -223,5 +244,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Logs if position orders have differences" sap:VirtualizedContainerService.HintSize="478,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[If(out_TransactionData.RowCount &gt; 0,&#xD;&#xA;&quot;****** Existen &quot;+out_TransactionData.RowCount.ToString+&quot; Pedidos Posición con diferencias con relación al reporte de ayer ******&quot;,&#xD;&#xA;&quot;****** No existen Pedidos Posición con diferencias con relación al reporte de ayer ******&quot;&#xD;&#xA;)]" />
   </Sequence>
 </Activity>
