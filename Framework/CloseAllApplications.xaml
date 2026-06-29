@@ -1,5 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CloseAllApplications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CloseAllApplications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:umame="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Enums;assembly=UiPath.Mail.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_ReportPath" Type="InArgument(x:String)" />
     <x:Property Name="in_TransactionData" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_FullFinalReportPath" Type="InArgument(x:String)" />
@@ -46,6 +47,14 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Mail.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities.Enums</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -104,9 +113,16 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="1196,849.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="1190,1296" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -114,7 +130,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Closing applications...&quot;]" />
-    <If Condition="[in_TransactionData.RowCount &gt; 0]" DisplayName="Monitor origin restrictions based on transaction data" sap:VirtualizedContainerService.HintSize="452,254" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[in_TransactionData.RowCount &gt; 0]" DisplayName="Monitor origin restrictions based on transaction data" sap:VirtualizedContainerService.HintSize="452,722" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -122,12 +138,49 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,558" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="User" />
+            <Variable x:TypeArguments="ss:SecureString" Name="Password" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;PosiSoftEmailSender&quot;).ToString.Trim]" CacheStrategy="None" DisplayName="Get Credential - email account" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString.Trim]" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Password]" Username="[User]" />
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[&quot;Se encuentran cambios para los pedidos &quot;+in_Config(&quot;BatchIntervals&quot;).ToString.Trim]" ConnectionMode="LegacyConfiguration" DisplayName="Send SMTP Email - notify by success" Email="[User]" EnableSSL="True" From="[User]" sap:VirtualizedContainerService.HintSize="416,322" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Name="Bot R12 Monitorizar Restricciones Origen" Port="[CInt(in_Config(&quot;SmtpPort&quot;))]" SecureConnection="Auto" SecurePassword="[Password]" Server="[in_Config(&quot;SmtpEmailserver&quot;).ToString.Trim]" Subject="[&quot;AMP 12 Hay novedades &quot;+in_Config(&quot;BatchIntervals&quot;).ToString.Trim]" TimeoutMS="60000" To="[in_Config(&quot;MRO_EmailTo&quot;).ToString.Trim]" UseISConnection="False" UseRichTextEditor="True">
+            <ui:SendMail.AttachmentsBackup>
+              <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
+                <usau:BackupSlot.BackupValues>
+                  <scg:List x:TypeArguments="x:Object" x:Key="Existing" Capacity="1">
+                    <x:Null />
+                  </scg:List>
+                  <scg:List x:TypeArguments="x:Object" x:Key="FilePaths" Capacity="2">
+                    <x:Null />
+                    <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                      <InArgument x:TypeArguments="x:String">[FinalReportPath]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[ScreenshotPath]</InArgument>
+                    </scg:List>
+                  </scg:List>
+                </usau:BackupSlot.BackupValues>
+              </usau:BackupSlot>
+            </ui:SendMail.AttachmentsBackup>
+            <ui:SendMail.ConnectionDetailsBackupSlot>
+              <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="LegacyConfiguration">
+                <usau:BackupSlot.BackupValues>
+                  <scg:List x:TypeArguments="x:Object" x:Key="IntegrationService" Capacity="1">
+                    <x:Null />
+                  </scg:List>
+                </usau:BackupSlot.BackupValues>
+              </usau:BackupSlot>
+            </ui:SendMail.ConnectionDetailsBackupSlot>
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                <InArgument x:TypeArguments="x:String">[in_ReportPath]</InArgument>
+              </scg:List>
+            </ui:SendMail.Files>
+          </ui:SendMail>
         </Sequence>
       </If.Then>
       <If.Else>

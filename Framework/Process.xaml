@@ -138,11 +138,7 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1190,1337" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="ReportPedido">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="New DataTable" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="sd:DataTable" Default="[New DataTable]" Name="ReportPedido" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -177,10 +173,10 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="SAP_DownloadReport - Invoke Workflow File (Apps\SAP\SAP_DownloadReport.xaml)" sap:VirtualizedContainerService.HintSize="452,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Apps\SAP\SAP_DownloadReport.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_MainReport" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath" />
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TableReport" />
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_MainReport">False</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Data</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[Path.Combine(System.Environment.CurrentDirectory,"Data\Temp","TempReport.xlsx")]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TableReport">[ReportPedido]</OutArgument>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>

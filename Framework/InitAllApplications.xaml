@@ -128,9 +128,11 @@
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1190,1911" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1190,2091" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[New DataTable]" Name="TableReport" />
     </Sequence.Variables>
@@ -180,12 +182,40 @@
               <OutArgument x:TypeArguments="x:String">[out_ReportPath]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("ReportPath").ToString.Trim,String.Format(in_Config("ReportName").ToString.Trim,Now.ToString("yyyyMMdd")))]</InArgument>
+              <InArgument x:TypeArguments="x:String">[Path.Combine(String.Format(in_Config("ReportPath").ToString.Trim,Now.ToString("dd_MM_yyyy")),String.Format(in_Config("ReportName").ToString.Trim,in_Config("BatchIntervals").ToString.Trim.Replace("-","_")))]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
+    <If Condition="[Directory.Exists(Path.GetDirectoryName(out_ReportPath))]" DisplayName="Check and delete a directory if it exists" sap:VirtualizedContainerService.HintSize="478,57" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:DeleteFolderX DisplayName="Delete a specified folder recursively" sap:VirtualizedContainerService.HintSize="416,104" sap2010:WorkflowViewState.IdRef="DeleteFolderX_2" Path="[Path.GetDirectoryName(out_ReportPath)]" Recursive="True" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create a folder for reports" sap:VirtualizedContainerService.HintSize="478,123" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[Path.GetDirectoryName(out_ReportPath)]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="SAP_Login - Invoke Workflow File (Apps\SAP\SAP_Login.xaml)" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Apps\SAP\SAP_Login.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
@@ -244,6 +274,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Logs if position orders have differences" sap:VirtualizedContainerService.HintSize="478,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[If(out_TransactionData.RowCount &gt; 0,&#xD;&#xA;&quot;****** Existen &quot;+out_TransactionData.RowCount.ToString+&quot; Pedidos Posición con diferencias con relación al reporte de ayer ******&quot;,&#xD;&#xA;&quot;****** No existen Pedidos Posición con diferencias con relación al reporte de ayer ******&quot;&#xD;&#xA;)]" />
+    <ui:LogMessage DisplayName="Logs if position orders have differences" sap:VirtualizedContainerService.HintSize="478,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[If(out_TransactionData.RowCount &gt; 0,&#xD;&#xA;&quot;****** Existen &quot;+out_TransactionData.RowCount.ToString+&quot; Pedidos Posición con novedades con relación al reporte de ayer ******&quot;,&#xD;&#xA;&quot;****** No existen Pedidos Posición con novedades con relación al reporte de ayer ******&quot;&#xD;&#xA;)]" />
   </Sequence>
 </Activity>
