@@ -112,28 +112,30 @@
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SAP_AddBatchesExecute" sap:VirtualizedContainerService.HintSize="1190,1833" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SAP_AddBatchesExecute" sap:VirtualizedContainerService.HintSize="1190,2246" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - start" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Inicia add batches and ejecutar en SAP Logon&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="SAP add batches and ejecutar" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="452,1469" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V2">
+    <ui:LogMessage DisplayName="Log Message - start" sap:VirtualizedContainerService.HintSize="455,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Inicia add batches and ejecutar en SAP Logon&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="SAP add batches and ejecutar" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="455,1882" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do - Easy Access" sap:VirtualizedContainerService.HintSize="450,1318" sap2010:WorkflowViewState.IdRef="Sequence_32">
+          <Sequence DisplayName="Do - Easy Access" sap:VirtualizedContainerService.HintSize="453,1731" sap2010:WorkflowViewState.IdRef="Sequence_32">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type value into SAP sales document field low" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="SameAsCard" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Text="[Split(in_Config(&quot;BatchIntervals&quot;).ToString,&quot;-&quot;)(0).Trim]" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type value into SAP sales document field low" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="419,246" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="SameAsCard" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Text="[Split(in_Config(&quot;BatchIntervals&quot;).ToString,&quot;-&quot;)(0).Trim]" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable DesignTimeRectangle="263, 247, 76, 20" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;sap id='usr/ctxtSP*LOW' tooltip='Documento de ventas' type='GuiCTextField' /&gt;" Guid="f6459327-ff23-4ada-9706-faea377fc437" InformativeScreenshot="de77daf33f8355851d010cb21b9b09b4.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Campos Z Posiciones' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Complete" />
               </uix:NTypeInto.Target>
@@ -144,7 +146,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NTypeInto>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type value into SAP sales document field high" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="SameAsCard" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Text="[Split(in_Config(&quot;BatchIntervals&quot;).ToString,&quot;-&quot;)(0).Trim]" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type value into SAP sales document field high" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="419,246" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="SameAsCard" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Text="[Split(in_Config(&quot;BatchIntervals&quot;).ToString,&quot;-&quot;)(0).Trim]" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable DesignTimeRectangle="438, 247, 76, 20" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;sap id='usr/ctxtSP*HIGH' tooltip='Documento de ventas' type='GuiCTextField' /&gt;" Guid="73916f1b-79f9-4058-89bd-a39f05211814" InformativeScreenshot="eeecba189876375639fce5c8e929eed7.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Campos Z Posiciones' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Complete" />
               </uix:NTypeInto.Target>
@@ -155,7 +157,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NTypeInto>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type configured text into SAP Layout field" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_6" InteractionMode="SameAsCard" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Text="[in_Config(&quot;PLayout&quot;).ToString]" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type configured text into SAP Layout field" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="419,246" sap2010:WorkflowViewState.IdRef="NTypeInto_6" InteractionMode="SameAsCard" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Text="[in_Config(&quot;SAPLayout&quot;).ToString]" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable DesignTimeRectangle="263, 335, 90, 20" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;sap id='usr/ctxt*LAYOUT' tooltip='Layout' type='GuiCTextField' /&gt;" Guid="64339a38-fd08-4230-a2eb-1826026edb0e" InformativeScreenshot="90729e4ba4ad8169d187114080cccc0f.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Campos Z Posiciones' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Complete" />
               </uix:NTypeInto.Target>
@@ -166,7 +168,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NTypeInto>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Ejecutar' button in SAP" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Ejecutar' button in SAP" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="419,194" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
               <uix:NClick.Target>
                 <uix:TargetAnchorable DesignTimeRectangle="32, 123, 20, 20" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;sap id='tbar[*]/btn[*]' tooltip='Ejecutar*(F8)' type='GuiButton' /&gt;" Guid="40482455-7614-4d24-98bf-2c7615e46673" InformativeScreenshot="82c879b92943327eda00c30a7e694e8a.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Complete" />
               </uix:NClick.Target>
@@ -177,12 +179,18 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NClick>
-            <uix:NCheckState DisplayName="Handle SAP application suspension or cancellation warning" EnableIfNotExists="False" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutShort&quot;))]" Version="V5">
+            <uix:NCheckState DisplayName="Handle SAP application suspension or cancellation warning" EnableIfNotExists="False" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="419,470" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutShort&quot;))]" Version="V5">
               <uix:NCheckState.IfExists>
                 <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'No' on application suspension dialog" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="417,162" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="SameAsCard" KeyModifiers="[UiPath.UIAutomationNext.Enums.NKeyModifiers.Alt]" MouseButton="Left" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable ContentHash="ydk4UySgVU6mAFhR7WwCVw" DesignTimeRectangle="143, 119, 104, 22" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;sap id='usr/btnBUTTON*' text='*No' tooltip='No' type='GuiButton' /&gt;" Guid="59d27d02-aa25-4e27-9ab9-7a6f99c45ef1" InformativeScreenshot="bb6cb4da4546a15dc1bf78819a2bd7ac.png" Reference="oCOFMf_dREKLlM0YaHnBwQ/qwNT2s3vmUSfRv_VX2Gn-A" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Es posible que la aplicación se suspenda o se cancele' idx='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Complete" />
                   </uix:NClick.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </uix:NClick>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
@@ -199,12 +207,12 @@
               </uix:NCheckState.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NCheckState>
-            <uix:NCheckState DisplayName="Check SAP GUI grid control state" EnableIfExists="False" EnableIfNotExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="416,269" sap2010:WorkflowViewState.IdRef="NCheckState_7" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
+            <uix:NCheckState DisplayName="Check SAP GUI grid control state" EnableIfExists="False" EnableIfNotExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="419,269" sap2010:WorkflowViewState.IdRef="NCheckState_7" ScopeIdentifier="3ff037db-8a25-4589-bb10-57ded4101b43" Timeout="[CDbl(in_Config(&quot;SAP_TimeoutMedium&quot;))]" Version="V5">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_34">
                   <sap:WorkflowViewStateService.ViewState>
@@ -263,6 +271,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
-    <ui:LogMessage DisplayName="Log Message - end" sap:VirtualizedContainerService.HintSize="452,166" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Finalizaadd batches and ejecutar en SAP Logon&quot;]" />
+    <ui:LogMessage DisplayName="Log Message - end" sap:VirtualizedContainerService.HintSize="455,166" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Finalizaadd batches and ejecutar en SAP Logon&quot;]" />
   </Sequence>
 </Activity>

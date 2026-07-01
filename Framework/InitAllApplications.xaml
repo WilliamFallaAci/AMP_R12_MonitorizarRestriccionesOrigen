@@ -132,7 +132,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1190,2091" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1190,2268" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[New DataTable]" Name="TableReport" />
     </Sequence.Variables>
@@ -274,6 +274,18 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Logs if position orders have differences" sap:VirtualizedContainerService.HintSize="478,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[If(out_TransactionData.RowCount &gt; 0,&#xD;&#xA;&quot;****** Existen &quot;+out_TransactionData.RowCount.ToString+&quot; Pedidos Posición con novedades con relación al reporte de ayer ******&quot;,&#xD;&#xA;&quot;****** No existen Pedidos Posición con novedades con relación al reporte de ayer ******&quot;&#xD;&#xA;)]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="SAP_GoBackTransaction - Invoke Workflow File (Apps\SAP\SAP_GoBackTransaction.xaml)" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Apps\SAP\SAP_GoBackTransaction.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="RequiredBatches">False</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Logs if position orders have differences" sap:VirtualizedContainerService.HintSize="478,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[If(out_TransactionData.RowCount &gt; 0,&#xA;&quot;****** Existen &quot;+out_TransactionData.RowCount.ToString+&quot; Pedidos Posición con novedades con relación al reporte de ayer ******&quot;,&#xA;&quot;****** No existen Pedidos Posición con novedades con relación al reporte de ayer ******&quot;&#xA;)]" />
   </Sequence>
 </Activity>

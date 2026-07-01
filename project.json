@@ -35,7 +35,7 @@
   },
   "designOptions": {
     "projectProfile": "Developement",
-    "outputType": "Tests",
+    "outputType": "Process",
     "libraryOptions": {
       "privateWorkflows": []
     },
@@ -44,22 +44,47 @@
     },
     "fileInfoCollection": [
       {
-        "templateType": "ExecutionTemplate",
-        "fileName": ".templates\\TestFramework.xaml"
+        "editingStatus": "InProgress",
+        "testCaseId": "50a162a0-10ce-4c5d-b763-e360affe5f13",
+        "testCaseType": "TestCase",
+        "fileName": "Tests\\InitAllApplicationsTestCase.xaml"
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "4e0346ee-7555-4f1d-8b09-668d120a705d",
-        "executionTemplatePath": ".templates\\TestFramework.xaml",
+        "testCaseId": "5085d47b-3207-47c2-bfcc-092256c6f07a",
         "testCaseType": "TestCase",
-        "executionTemplateType": "Local",
-        "executionTemplateInvokeIsolated": false,
-        "fileName": "TestCase.xaml"
+        "fileName": "Tests\\Isolated.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "be823698-a541-4c70-b071-ae531ac500fe",
+        "testCaseType": "TestCase",
+        "fileName": "Tests\\ProcessTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "f8efa86b-4c0c-44de-a046-f73b9a052ad7",
+        "testCaseType": "TestCase",
+        "fileName": "Tests\\Apps\\SAP\\TestCase_SAP_Login.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "872a27d4-19d2-499c-9cbb-505e38b5fff7",
+        "testCaseType": "TestCase",
+        "fileName": "Tests\\Apps\\SAP\\TestCase_SAP_Logout.xaml"
       }
     ],
     "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "5156b0dd-a9ad-44f4-83a7-3a4397f3c19d",
+      "input": [],
+      "output": []
+    }
+  ],
   "isTemplate": false,
   "templateProjectData": {},
   "publishData": {},
